@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title><%=title %></title>
+</head>
+<body>
+    <%- include('./head.ejs')  %>
+
+    <section class="home">
+        <a href="/catalog/shoes/create" class="page-links">New Shoe</a>
+        <%if(shoe.length > 0){%>
+        <%shoe.forEach(element => {%>
+            <div class="home-page">
+                <div class="shoe-list">
+                    <a href="/catalog/shoes/<%=element._id%>" class="page-links"> <%=element.title %> </a>
+                    <p class="home-info"> <%= element.seller.name%> </p>
+                </div>
+            </div>
+       <%})%>
+       <%}else{%>
+            <p>There are no shoes</p>
+        <%}%>
+    </section>
+</body>
+</html>
