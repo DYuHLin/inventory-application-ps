@@ -41,3 +41,5 @@ async function deleteType(params) {
 async function deleteBrand(params) {
     await pool.query(`DELETE FROM brand WHERE id = ${params};`);
 };
+
+module.exports = {getAllShoes, getAllTypes, getAllBrands, insertShoe, insertBrand, insertType, deleteBrand, deleteShoe, deleteType};
