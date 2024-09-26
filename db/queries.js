@@ -6,16 +6,36 @@ async function getAllShoes() {
     return rows;
 };
 
+async function getSingleShoe(id) {
+    const {rows} = await pool.query(`SELECT * FROM shoe INNER JOIN brand ON shoe.brand = brand.id INNER JOIN type ON shoe.type = type.id WHERE shoe.id = ${id};`);
+
+    return rows;
+};
+
 async function getAllBrands() {
     const {rows} = await pool.query(`SELECT * FROM brand;`);
     
     return rows;
 };
 
+async function getSingleBrand(id) {
+    const {rows} = await pool.query(`SELECT * FROM brand WHERE id = ${id};`);
+    const {shoes} = await pool.query(`SELECT * FROM shoe WHERE brand = ${id};`);
+    
+    return {rows, shoes};
+};
+
 async function getAllTypes() {
     const {rows} = await pool.query(`SELECT * FROM type;`);
 
     return rows;
+};
+
+async function getSingleType(id) {
+    const {rows} = await pool.query(`SELECT * FROM type WHERE id = ${id};`);
+    const {shoes} = await pool.query(`SELECT * FROM shoe WHERE type = ${id};`);
+
+    return {rows, shoes};
 };
 
 async function insertShoe(name, price, type, brand) {
@@ -42,4 +62,7 @@ async function deleteBrand(params) {
     await pool.query(`DELETE FROM brand WHERE id = ${params};`);
 };
 
-module.exports = {getAllShoes, getAllTypes, getAllBrands, insertShoe, insertBrand, insertType, deleteBrand, deleteShoe, deleteType};
+module.exports = {getAllShoes, getAllTypes, getAllBrands, 
+    insertShoe, insertBrand, insertType, deleteBrand, 
+    deleteShoe, deleteType, getSingleBrand, getSingleType, 
+    getSingleShoe};

@@ -11,15 +11,13 @@
     <%- include('./head.ejs')  %>
     <section class="home">
         <div class="detail-links">
-            <a class="page-links" href="/catalog/seller/<%=sellers._id  %>/update">Update seller</a>
-            <a class="page-links" href="/catalog/seller/<%=sellers._id  %>/delete">Delete seller</a>
+            <a class="page-links" href="/alltypes/<%=type.id  %>/update">Update Type</a>
+            <a class="page-links" href="/alltypes/<%=type.id  %>/delete">Delete Type</a>
         </div>
 
         <div class="home-page">
-            <p class="home-info title">Seller Information</p>
-            <p><b>Name:</b>  <%= sellers.name %></p>
-            <p><b>Brand:</b>  <%= sellers.shoebrand.name %></p>
-            <p><b>Established:</b>  <%= sellers.established_formatted %></p>
+            <p class="home-info title">Type Information</p>
+            <p><b>Name:</b>  <%= type.name %></p>
         </div>
 
         <div class="home-page">
@@ -27,11 +25,11 @@
             <%if(shoes.length > 0){%>
                 <%shoes.forEach(element => {%>
                     <div class="shoe-list">
-                        <p class="home-info"><%= element.title %></p>
+                        <p class="home-info"><%= element.name %></p>
                     </div>
                <%})%>
                <%}else{%>
-                    <p>There are no shoes for this seller</p>
+                    <p>There are no shoes for this type</p>
                 <%}%>
         </div>
     </section>

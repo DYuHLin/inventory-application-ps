@@ -11,8 +11,8 @@
     <%- include('./head.ejs')  %>
     <section class="home"> 
         <div class="detail-links">
-            <a class="page-links" href="/catalog/brand/<%=brand._id  %>/update">Update Brand</a>
-            <a class="page-links" href="/catalog/brand/<%=brand._id  %>/delete">Delete Brand</a>
+            <a class="page-links" href="/allbrands/<%=brand.id  %>/update">Update Brand</a>
+            <a class="page-links" href="/allbrands/<%=brand.id  %>/delete">Delete Brand</a>
         </div>
         
     <div class="home-page">
@@ -27,7 +27,7 @@
         <%if(shoes.length > 0){%>
             <%shoes.forEach(element => {%>
                 <div class="shoe-list">
-                    <p><%=element.title %></p>
+                    <p><%=element.name %></p>
                 </div>
            <%})%>
            <%}else{%>
