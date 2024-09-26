@@ -11,16 +11,15 @@
     <%- include('./head.ejs')  %>
 
     <section class="home">
-        <a href="/catalog/seller/create" class="page-links">New Seller</a>
-        <%if(seller_list.length > 0){%>
-        <%seller_list.forEach(element => {%>
+        <a href="/alltypes/create" class="page-links">New Type</a>
+        <%if(type.length > 0){%>
+        <%type.forEach(element => {%>
             <div class="home-page">
-                <a href="/catalog/seller/<%=element._id%>" class="page-links"> <%=element.name %> </a>
-                <p> <%= element.established_formatted%> </p>
+                <a href="/alltypes/<%=element.id%>" class="page-links"> <%=element.name %> </a>
             </div>
        <%})%>
        <%}else{%>
-            <p>There are no Sellers</p>
+            <p>There are no Types</p>
         <%}%>
     </section>
 </body>

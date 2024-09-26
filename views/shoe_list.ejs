@@ -11,12 +11,12 @@
     <%- include('./head.ejs')  %>
 
     <section class="home">
-        <a href="/catalog/shoes/create" class="page-links">New Shoe</a>
+        <a href="/allshoes/create" class="page-links">New Shoe</a>
         <%if(shoe.length > 0){%>
         <%shoe.forEach(element => {%>
             <div class="home-page">
                 <div class="shoe-list">
-                    <a href="/catalog/shoes/<%=element._id%>" class="page-links"> <%=element.name %> </a>
+                    <a href="/allshoes/<%=element.id%>" class="page-links"> <%=element.name %> </a>
                     <p class="home-info"> <%= element.price%> </p>
                 </div>
             </div>

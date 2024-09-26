@@ -11,11 +11,11 @@
     <%- include('./head.ejs')  %>
 
     <section class="home">
-        <a href="/catalog/brand/create" class="page-links">New Brand</a>
+        <a href="/allbrands/create" class="page-links">New Brand</a>
         <%if(brand.length > 0){%>
         <%brand.forEach(element => {%>
             <div class="home-page">
-                <a href="/catalog/brand/<%=element._id%>" class="page-links"> <%=element.name %> </a>
+                <a href="/allbrands/<%=element.id%>" class="page-links"> <%=element.name %> </a>
                 <p> <%= element.origin%> </p>
             </div>
        <%})%>
