@@ -10,7 +10,6 @@ exports.get_types = asyncHandler(async (req, res, next) => {
 
 exports.get_single_type = asyncHandler(async (req, res, next) => {
     const type = await pool.getSingleType(req.params.id);
-    console.log(type.rows)
-    console.log(type.shoes)
-    res.render('type_detail', {title: 'Type', type: type.rows, shoes: !type.shoes ? [] : type.shoes});
+    const shoes = await pool.getSingleTypeShoe(req.params.id);
+    res.render('type_detail', {title: 'Type', type: type[0], shoes: !shoes ? [] : shoes});
 });

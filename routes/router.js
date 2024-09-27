@@ -9,5 +9,6 @@ router.get('/allshoes', shoe_controller.get_all_shoes);
 router.get('/allbrands', brand_controller.get_brands);
 router.get('/alltypes', type_controller.get_types);
 router.get('/alltypes/:id', type_controller.get_single_type);
+router.get('/allbrands/:id', brand_controller.get_single_brand);
 
 module.exports = router;

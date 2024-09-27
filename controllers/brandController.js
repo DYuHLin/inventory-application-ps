@@ -9,5 +9,8 @@ exports.get_brands = asyncHandler(async (req, res, next) => {
 
 exports.get_single_brand = asyncHandler(async (req, res, next) => {
     const brand = await pool.getSingleBrand(req.params.id);
-    res.render('brand_detail', {title: 'Brand', brand: brand.rows, shoes: brand.shoes});
+    const shoes = await pool.getSingleBrandShoe(req.params.id);
+    console.log(brand)
+    console.log(shoes)
+    res.render('brand_detail', {title: 'Brand', brand: brand[0], shoes: !shoes ? [] : shoes});
 });
