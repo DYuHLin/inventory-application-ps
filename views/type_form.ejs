@@ -11,16 +11,11 @@
     <%- include('./head.ejs')  %>
 
     <section class="home">
-        <a href="/alltypes/create" class="page-links">New Type</a>
-        <%if(type.length > 0){%>
-        <%type.forEach(element => {%>
-            <div class="home-page">
-                <a href="/alltypes/single/<%=element.id%>" class="page-links"> <%=element.name %> </a>
-            </div>
-       <%})%>
-       <%}else{%>
-            <p>There are no Types</p>
-        <%}%>
+        <form method="POST">
+            <label for="name">Name: </label>
+            <input name="name" type="text" id="name" required value="<%=undefined === type ? "" : type.name %>"/>
+            <button type="submit">Create Type</button>
+        </form>
     </section>
 </body>
 </html>

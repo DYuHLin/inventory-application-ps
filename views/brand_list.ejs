@@ -15,7 +15,7 @@
         <%if(brand.length > 0){%>
         <%brand.forEach(element => {%>
             <div class="home-page">
-                <a href="/allbrands/<%=element.id%>" class="page-links"> <%=element.name %> </a>
+                <a href="/allbrands/single/<%=element.id%>" class="page-links"> <%=element.name %> </a>
                 <p> <%= element.origin%> </p>
             </div>
        <%})%>

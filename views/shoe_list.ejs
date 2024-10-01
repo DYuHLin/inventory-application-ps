@@ -16,8 +16,11 @@
         <%shoe.forEach(element => {%>
             <div class="home-page">
                 <div class="shoe-list">
-                    <a href="/allshoes/<%=element.id%>" class="page-links"> <%=element.name %> </a>
-                    <p class="home-info"> <%= element.price%> </p>
+                    <a href="/allshoes/single/<%=element.id%>" class="page-links"> <%=element.name %> </a>
+                    <span class="info-shoe"> (<%= element.type_name%>,  </span>
+                    <span class="info-shoe"> <%= element.brand_name%> )</span>
+                    <p class="home-info"> Price: <%= element.price%> </p>
+                    <span> Stock: <%= element.stock%> </span>       
                 </div>
             </div>
        <%})%>

@@ -9,7 +9,7 @@ async function getAllShoes() {
 
 async function getSingleShoe(id) {
     const {rows} = await pool.query(`SELECT shoe.id AS id, shoe.name AS name, price, stock, type.name AS type_name, brand.name AS brand_name  FROM shoe INNER JOIN 
-        brand ON shoe.brand = brand.id INNER JOIN type ON shoe.type = type.id; WHERE shoe.id = ${id};`);
+        brand ON shoe.brand = brand.id INNER JOIN type ON shoe.type = type.id WHERE shoe.id = ${id};`);
 
     return rows;
 };

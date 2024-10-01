@@ -11,5 +11,5 @@ exports.get_all_shoes = asyncHandler(async (req, res, next) => {
 exports.get_single_shoe = asyncHandler(async (req, res, next) => {
     const shoe = await pool.getSingleShoe(req.params.id);
     console.log(shoe);
-    res.render('shoe', {title: 'All Shoes', shoe: shoe});
+    res.render('shoe_detail', {title: 'All Shoes', shoe: shoe[0]});
 });

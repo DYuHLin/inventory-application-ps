@@ -14,3 +14,15 @@ exports.get_single_brand = asyncHandler(async (req, res, next) => {
     console.log(shoes)
     res.render('brand_detail', {title: 'Brand', brand: brand[0], shoes: !shoes ? [] : shoes});
 });
+
+exports.get_create_brand = asyncHandler(async (req, res, next) => {
+    const brand = await pool.getAllBrands();
+    res.render('brand_form', {title: 'CreateBrand', brand: brand});
+});
+
+exports.create_type = asyncHandler(async (req, res, next) => {
+    console.log(req.body.name);
+    const {name} = req.body;
+    await pool.insertType(name);
+    return res.redirect('/alltypes');
+});

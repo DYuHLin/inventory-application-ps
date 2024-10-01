@@ -136,6 +136,11 @@ textarea {
   resize: none;
 }
 
+.info-shoe{
+  font-weight: 600;
+  gap: 20px;
+}
+
 label {
   margin-bottom: 12px;
   margin-top: 12px;

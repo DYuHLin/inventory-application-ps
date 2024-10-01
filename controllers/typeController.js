@@ -13,3 +13,15 @@ exports.get_single_type = asyncHandler(async (req, res, next) => {
     const shoes = await pool.getSingleTypeShoe(req.params.id);
     res.render('type_detail', {title: 'Type', type: type[0], shoes: !shoes ? [] : shoes});
 });
+
+exports.get_create_type = asyncHandler(async (req, res, next) => {
+    const type = await pool.getAllTypes();
+    return res.render('type_form', {title: 'CreateType', type: type});
+});
+
+exports.create_type = asyncHandler(async (req, res, next) => {
+    console.log(req.body.name);
+    const {name} = req.body;
+    await pool.insertType(name);
+    return res.redirect('/alltypes');
+});
