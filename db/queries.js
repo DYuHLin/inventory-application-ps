@@ -50,16 +50,16 @@ async function getSingleTypeShoe(id) {
     return rows;
 };
 
-async function insertShoe(name, price, type, brand) {
-    await pool.query(`INSERT INTO shoe (name, price, type, brand) VALUES ($1)`, [name, price, type, brand]);
+async function insertShoe(name, price, stock, type, brand) {
+    await pool.query(`INSERT INTO shoe (name, price, stock, type, brand) VALUES($1, $2, $3, $4, $5)`, [name, price, stock, type, brand]);
 };
 
 async function insertBrand(name, origin) {
-    await pool.query(`INSERT INTO brand (name, origin) VALUES ($1)`, [name, origin]);
+    await pool.query(`INSERT INTO brand (name, origin) VALUES($1, $2)`, [name, origin]);
 };
 
 async function insertType(name) {
-    await pool.query(`INSERT INTO type (name) VALUES ($1)`, [name]);
+    await pool.query(`INSERT INTO type (name) VALUES($1)`, [name]);
 };
 
 async function deleteShoe(params) {

@@ -11,9 +11,9 @@
     <%- include('./head.ejs')  %>
 
     <section class="home">
-        <form method="POST">
-            <label for="name">Name: </label>
-            <input name="name" type="text" id="name" required value="<%=undefined === type ? "" : type.name %>"/>
+        <form method="POST" action="/alltypes/create">
+            <label for="typeshoe">Name: </label>
+            <input name="typeshoe" type="text" id="typeshoe" required value="<%=undefined === type ? "" : type.name %>"/>
             <button type="submit">Create Type</button>
         </form>
     </section>

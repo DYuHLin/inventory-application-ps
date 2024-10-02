@@ -20,8 +20,8 @@ exports.get_create_type = asyncHandler(async (req, res, next) => {
 });
 
 exports.create_type = asyncHandler(async (req, res, next) => {
-    console.log(req.body.name);
-    const {name} = req.body;
-    await pool.insertType(name);
+    console.log(req.body.typeshoe);
+    const {typeshoe} = req.body;
+    await pool.insertType(typeshoe);
     return res.redirect('/alltypes');
 });

@@ -20,9 +20,10 @@ exports.get_create_brand = asyncHandler(async (req, res, next) => {
     res.render('brand_form', {title: 'CreateBrand', brand: brand});
 });
 
-exports.create_type = asyncHandler(async (req, res, next) => {
-    console.log(req.body.name);
-    const {name} = req.body;
-    await pool.insertType(name);
-    return res.redirect('/alltypes');
+exports.create_brand = asyncHandler(async (req, res, next) => {
+    const {name, origin} = req.body;
+    console.log(name);
+    console.log(origin);
+    await pool.insertBrand(name, origin);
+    return res.redirect('/allbrands');
 });
