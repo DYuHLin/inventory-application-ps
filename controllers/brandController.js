@@ -10,8 +10,6 @@ exports.get_brands = asyncHandler(async (req, res, next) => {
 exports.get_single_brand = asyncHandler(async (req, res, next) => {
     const brand = await pool.getSingleBrand(req.params.id);
     const shoes = await pool.getSingleBrandShoe(req.params.id);
-    console.log(brand)
-    console.log(shoes)
     res.render('brand_detail', {title: 'Brand', brand: brand[0], shoes: !shoes ? [] : shoes});
 });
 
@@ -22,8 +20,6 @@ exports.get_create_brand = asyncHandler(async (req, res, next) => {
 
 exports.create_brand = asyncHandler(async (req, res, next) => {
     const {name, origin} = req.body;
-    console.log(name);
-    console.log(origin);
     await pool.insertBrand(name, origin);
     return res.redirect('/allbrands');
 });

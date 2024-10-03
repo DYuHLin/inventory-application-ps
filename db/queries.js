@@ -74,7 +74,20 @@ async function deleteBrand(params) {
     await pool.query(`DELETE FROM brand WHERE id = ${params};`);
 };
 
+async function updateShoe(name, price, stock, type, brand, id) {
+    await pool.query(`UPDATE shoe SET name = ${name}, price = ${price}, stock = ${stock}, type = ${type}, brand = ${brand}  WHERE id = ${id}`);
+};
+
+async function updateBrand(name, origin, id) {
+    await pool.query(`UPDATE brand SET name = ${name}, origin = ${origin}  WHERE id = ${id}`);
+};
+
+async function updateType(name, id) {
+    await pool.query(`UPDATE type SET name = ${name}  WHERE id = ${id}`);
+};
+
 module.exports = {getAllShoes, getAllTypes, getAllBrands, 
     insertShoe, insertBrand, insertType, deleteBrand, 
     deleteShoe, deleteType, getSingleBrand, getSingleType, 
-    getSingleShoe, getSingleTypeShoe, getSingleBrandShoe};
+    getSingleShoe, getSingleTypeShoe, getSingleBrandShoe,
+    updateShoe, updateBrand, updateType};
