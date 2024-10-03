@@ -25,3 +25,14 @@ exports.create_type = asyncHandler(async (req, res, next) => {
     await pool.insertType(typeshoe);
     return res.redirect('/alltypes');
 });
+
+exports.get_delete_type = asyncHandler(async (req, res, next) => {
+    const type = await pool.getSingleType(req.params.id);
+    const shoes = await pool.getSingleTypeShoe(req.params.id);
+    return res.render('type_delete', {title: 'TypeDelete', type: type[0], shoes: !shoes ? [] : shoes});
+});
+
+exports.delete_type = asyncHandler(async (req, res, next) => {
+    await pool.deleteType(req.body.typeid);
+    return res.redirect('/alltypes');
+});

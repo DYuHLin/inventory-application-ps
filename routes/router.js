@@ -21,4 +21,10 @@ router.post('/allbrands/create', brand_controller.create_brand);
 router.get('/allshoes/create', shoe_controller.get_create_shoe);
 router.post('/allshoes/create', shoe_controller.create_shoe);
 
+router.get('/allshoes/single/:id/delete', shoe_controller.get_shoe_delete);
+router.delete('/allshoes/single/:id/delete', shoe_controller.delete_shoe);
+
+router.get('/alltypes/single/:id/delete', type_controller.get_delete_type);
+router.delete('/alltypes/single/:id/delete', type_controller.delete_type);
+
 module.exports = router;

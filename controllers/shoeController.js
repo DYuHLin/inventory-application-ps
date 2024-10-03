@@ -10,7 +10,6 @@ exports.get_all_shoes = asyncHandler(async (req, res, next) => {
 
 exports.get_single_shoe = asyncHandler(async (req, res, next) => {
     const shoe = await pool.getSingleShoe(req.params.id);
-    console.log(shoe);
     res.render('shoe_detail', {title: 'All Shoes', shoe: shoe[0]});
 });
 
@@ -23,11 +22,16 @@ exports.get_create_shoe = asyncHandler(async (req, res, next) => {
 
 exports.create_shoe = asyncHandler(async (req, res, next) => {
     const {name, price, stock, type, brand} = req.body;
-    console.log(name);
-    console.log(price);
-    console.log(stock);
-    console.log(type);
-    console.log(brand);
     await pool.insertShoe(name, price, stock, type, brand);
+    return res.redirect('/allshoes');
+});
+
+exports.get_shoe_delete = asyncHandler(async (req, res, next) => {
+    const shoe = await pool.getSingleShoe(req.params.id);
+    return res.render('shoe_delete', {title: 'Delete Shoe', shoe: shoe[0]});
+});
+
+exports.delete_shoe = asyncHandler(async (req, res, next) => {
+    await pool.deleteShoe(req.body.shoeid);
     return res.redirect('/allshoes');
 });
