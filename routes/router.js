@@ -27,4 +27,7 @@ router.delete('/allshoes/single/:id/delete', shoe_controller.delete_shoe);
 router.get('/alltypes/single/:id/delete', type_controller.get_delete_type);
 router.delete('/alltypes/single/:id/delete', type_controller.delete_type);
 
+router.get('/allbrands/single/:id/delete', brand_controller.get_delete_brand);
+router.delete('/allbrands/single/:id/delete', brand_controller.delete_brand);
+
 module.exports = router;

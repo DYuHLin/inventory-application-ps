@@ -27,3 +27,14 @@ exports.create_brand = asyncHandler(async (req, res, next) => {
     await pool.insertBrand(name, origin);
     return res.redirect('/allbrands');
 });
+
+exports.get_delete_brand = asyncHandler(async (req, res, next) => {
+    const brand = await pool.getSingleBrand(req.params.id);
+    const shoes = await pool.getSingleBrandShoe(req.params.id);
+    return res.render('brand_delete', {title: 'BrandDelete', brand: brand[0], shoes: !shoes ? [] : shoes});
+});
+
+exports.delete_brand = asyncHandler(async (req, res, next) => {
+    await pool.deleteBrand(req.body.brandid);
+    return res.redirect('/alltypes');
+});
