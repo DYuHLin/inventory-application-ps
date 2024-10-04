@@ -22,12 +22,21 @@ router.get('/allshoes/create', shoe_controller.get_create_shoe);
 router.post('/allshoes/create', shoe_controller.create_shoe);
 
 router.get('/allshoes/single/:id/delete', shoe_controller.get_shoe_delete);
-router.delete('/allshoes/single/:id/delete', shoe_controller.delete_shoe);
+router.post('/allshoes/single/:id/delete', shoe_controller.delete_shoe);
 
 router.get('/alltypes/single/:id/delete', type_controller.get_delete_type);
-router.delete('/alltypes/single/:id/delete', type_controller.delete_type);
+router.post('/alltypes/single/:id/delete', type_controller.delete_type);
 
 router.get('/allbrands/single/:id/delete', brand_controller.get_delete_brand);
-router.delete('/allbrands/single/:id/delete', brand_controller.delete_brand);
+router.post('/allbrands/single/:id/delete', brand_controller.delete_brand);
+
+router.get('/alltypes/single/:id/update', type_controller.get_update_type);
+router.put('/alltypes/single/:id/update', type_controller.update_type);
+
+router.get('/allbrands/single/:id/update', brand_controller.get_update_brand);
+router.post('/allbrands/single/:id/update', brand_controller.brand_update);
+
+router.get('/allshoes/single/:id/update', shoe_controller.get_update_shoe);
+router.put('/allshoes/single/:id/update', shoe_controller.shoe_update);
 
 module.exports = router;

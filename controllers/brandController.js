@@ -32,5 +32,15 @@ exports.get_delete_brand = asyncHandler(async (req, res, next) => {
 
 exports.delete_brand = asyncHandler(async (req, res, next) => {
     await pool.deleteBrand(req.body.brandid);
-    return res.redirect('/alltypes');
+    return res.redirect('/allbrands');
+});
+
+exports.get_update_brand = asyncHandler(async (req, res, next) => {
+    const brand = await pool.getSingleBrand(req.params.id);
+    return res.render('brand_form', {title: 'EditBrand', brand: brand[0]});
+});
+
+exports.brand_update = asyncHandler(async (req, res, next) => {
+    await pool.updateBrand(req.body.name, req.body.origin, req.params.id);
+    return res.redirect('/allbrands');
 });

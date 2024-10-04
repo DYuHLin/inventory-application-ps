@@ -34,3 +34,15 @@ exports.delete_shoe = asyncHandler(async (req, res, next) => {
     await pool.deleteShoe(req.body.shoeid);
     return res.redirect('/allshoes');
 });
+
+exports.get_update_shoe = asyncHandler(async (req, res, next) => {
+    const shoe = await pool.getSingleShoe(req.params.id);
+    const brand = await pool.getAllBrands();
+    const type = await pool.getAllTypes();
+    return res.render('shoe_form', {title: 'UpdateShoe', shoe: shoe[0], brands: brand, types: type});
+});
+
+exports.shoe_update = asyncHandler(async (req, res, next) => {
+    await pool.updateShoe(req.body.name, req.body.price, req.body.stock, req.body.brand, req.body.type, req.params.id);
+    return res.redirect('/allshoes');
+});

@@ -16,7 +16,7 @@ exports.get_single_type = asyncHandler(async (req, res, next) => {
 
 exports.get_create_type = asyncHandler(async (req, res, next) => {
     const type = await pool.getAllTypes();
-    return res.render('type_form', {title: 'CreateType', type: type});
+    return res.render('type_form', {title: 'CreateType', type: undefined});
 });
 
 exports.create_type = asyncHandler(async (req, res, next) => {
@@ -34,5 +34,15 @@ exports.get_delete_type = asyncHandler(async (req, res, next) => {
 
 exports.delete_type = asyncHandler(async (req, res, next) => {
     await pool.deleteType(req.body.typeid);
+    return res.redirect('/alltypes');
+});
+
+exports.get_update_type = asyncHandler(async (req, res, next) => {
+    const type = await pool.getSingleType(req.params.id);
+    return res.render('type_form', {title: 'UpdateType', type: type[0]});
+});
+
+exports.update_type = asyncHandler(async (req, res, next) => {
+    await pool.updateType(req.body.typeshoe, req.params.id);
     return res.redirect('/alltypes');
 });

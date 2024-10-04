@@ -79,7 +79,7 @@ async function updateShoe(name, price, stock, type, brand, id) {
 };
 
 async function updateBrand(name, origin, id) {
-    await pool.query(`UPDATE brand SET name = ${name}, origin = ${origin}  WHERE id = ${id}`);
+    await pool.query(`UPDATE brand SET name = ${name}, origin = ${origin} WHERE id = ${id}`);
 };
 
 async function updateType(name, id) {
