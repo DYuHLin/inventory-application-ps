@@ -20,7 +20,6 @@ exports.get_create_type = asyncHandler(async (req, res, next) => {
 });
 
 exports.create_type = asyncHandler(async (req, res, next) => {
-    console.log(req.body.typeshoe);
     const {typeshoe} = req.body;
     await pool.insertType(typeshoe);
     return res.redirect('/alltypes');
@@ -42,7 +41,7 @@ exports.get_update_type = asyncHandler(async (req, res, next) => {
     return res.render('type_form', {title: 'UpdateType', type: type[0]});
 });
 
-exports.update_type = asyncHandler(async (req, res, next) => {
+exports.type_update = asyncHandler(async (req, res, next) => {
     await pool.updateType(req.body.typeshoe, req.params.id);
     return res.redirect('/alltypes');
 });

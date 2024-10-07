@@ -43,6 +43,6 @@ exports.get_update_shoe = asyncHandler(async (req, res, next) => {
 });
 
 exports.shoe_update = asyncHandler(async (req, res, next) => {
-    await pool.updateShoe(req.body.name, req.body.price, req.body.stock, req.body.brand, req.body.type, req.params.id);
+    await pool.updateShoe(req.body.name, req.body.price, req.body.stock, req.body.type, req.body.brand, req.params.id);
     return res.redirect('/allshoes');
 });

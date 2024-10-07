@@ -31,12 +31,12 @@ router.get('/allbrands/single/:id/delete', brand_controller.get_delete_brand);
 router.post('/allbrands/single/:id/delete', brand_controller.delete_brand);
 
 router.get('/alltypes/single/:id/update', type_controller.get_update_type);
-router.put('/alltypes/single/:id/update', type_controller.update_type);
+router.post('/alltypes/single/:id/update', type_controller.type_update);
 
 router.get('/allbrands/single/:id/update', brand_controller.get_update_brand);
 router.post('/allbrands/single/:id/update', brand_controller.brand_update);
 
 router.get('/allshoes/single/:id/update', shoe_controller.get_update_shoe);
-router.put('/allshoes/single/:id/update', shoe_controller.shoe_update);
+router.post('/allshoes/single/:id/update', shoe_controller.shoe_update);
 
 module.exports = router;

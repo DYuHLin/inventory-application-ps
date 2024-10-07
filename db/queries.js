@@ -75,15 +75,15 @@ async function deleteBrand(params) {
 };
 
 async function updateShoe(name, price, stock, type, brand, id) {
-    await pool.query(`UPDATE shoe SET name = ${name}, price = ${price}, stock = ${stock}, type = ${type}, brand = ${brand}  WHERE id = ${id}`);
+    await pool.query(`UPDATE shoe SET name = $1, price = $2, stock = $3, type = $4, brand = $5  WHERE id = $6`, [name, price, stock, type, brand, id]);
 };
 
-async function updateBrand(name, origin, id) {
-    await pool.query(`UPDATE brand SET name = ${name}, origin = ${origin} WHERE id = ${id}`);
+async function updateBrand(brand, origin, id) {
+    await pool.query(`UPDATE brand SET name = $1, origin = $2 WHERE id = $3`, [brand, origin, id]);
 };
 
 async function updateType(name, id) {
-    await pool.query(`UPDATE type SET name = ${name}  WHERE id = ${id}`);
+    await pool.query(`UPDATE type SET name = $1 WHERE id = $2`, [name, id]);
 };
 
 module.exports = {getAllShoes, getAllTypes, getAllBrands, 
