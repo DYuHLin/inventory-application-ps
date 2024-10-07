@@ -5,6 +5,8 @@ const type_controller = require("../controllers/typeController");
 
 const router = express.Router();
 
+router.get('/', shoe_controller.get_home);
+
 router.get('/allshoes', shoe_controller.get_all_shoes);
 router.get('/allbrands', brand_controller.get_brands);
 router.get('/alltypes', type_controller.get_types);

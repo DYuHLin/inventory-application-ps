@@ -2,6 +2,14 @@ const pool = require('../db/queries');
 const asyncHandler = require('express-async-handler');
 const {body, ValidationResult} = require('express-validator');
 
+exports.get_home = asyncHandler(async (req, res, next) => {
+    const shoeCount = await pool.getCountShoe();
+    const brandCount = await pool.getCountBrand();
+    const typeCount = await pool.getCountType();
+
+    return res.render('index', {title: 'Shoe Store', shoe_count: shoeCount[0], brand_count: brandCount[0], type_count: typeCount[0]});
+});
+
 exports.get_all_shoes = asyncHandler(async (req, res, next) => {
     const shoes = await pool.getAllShoes();
     res.render('shoe_list', {title: 'All Shoes', shoe: shoes});

@@ -86,8 +86,23 @@ async function updateType(name, id) {
     await pool.query(`UPDATE type SET name = $1 WHERE id = $2`, [name, id]);
 };
 
+async function getCountShoe() {
+    const {rows} = await pool.query(`SELECT COUNT(*) AS shoe FROM shoe;`);
+    return rows;
+};
+
+async function getCountType() {
+    const {rows} = await pool.query(`SELECT COUNT(*) AS type FROM type;`);
+    return rows;
+};
+
+async function getCountBrand() {
+    const {rows} = await pool.query(`SELECT COUNT(*) AS brand FROM brand;`);
+    return rows;
+};
+
 module.exports = {getAllShoes, getAllTypes, getAllBrands, 
     insertShoe, insertBrand, insertType, deleteBrand, 
     deleteShoe, deleteType, getSingleBrand, getSingleType, 
     getSingleShoe, getSingleTypeShoe, getSingleBrandShoe,
-    updateShoe, updateBrand, updateType};
+    updateShoe, updateBrand, updateType, getCountBrand, getCountShoe, getCountType};
