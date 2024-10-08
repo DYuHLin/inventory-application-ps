@@ -16,13 +16,20 @@ exports.get_single_type = asyncHandler(async (req, res, next) => {
 
 exports.get_create_type = asyncHandler(async (req, res, next) => {
     const type = await pool.getAllTypes();
+    
     return res.render('type_form', {title: 'CreateType', type: undefined});
 });
 
 exports.create_type = asyncHandler(async (req, res, next) => {
     const {typeshoe} = req.body;
-    await pool.insertType(typeshoe);
-    return res.redirect('/alltypes');
+    const check = await pool.getSingleTypeName(typeshoe);
+    console.log(check)
+    if(check.length == 0){
+        await pool.insertType(typeshoe);
+        return res.redirect('/alltypes');
+    }else {
+        return res.redirect('/alltypes');
+    };
 });
 
 exports.get_delete_type = asyncHandler(async (req, res, next) => {

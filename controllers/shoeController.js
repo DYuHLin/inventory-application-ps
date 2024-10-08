@@ -29,8 +29,14 @@ exports.get_create_shoe = asyncHandler(async (req, res, next) => {
 
 exports.create_shoe = asyncHandler(async (req, res, next) => {
     const {name, price, stock, type, brand} = req.body;
-    await pool.insertShoe(name, price, stock, type, brand);
-    return res.redirect('/allshoes');
+    const check = await pool.getSingleShoeName(name);
+    console.log(check);
+    if(check.length == 0){
+        await pool.insertShoe(name, price, stock, type, brand);
+        return res.redirect('/allshoes');
+    }else{
+        return res.redirect('/allshoes');
+    };
 });
 
 exports.get_shoe_delete = asyncHandler(async (req, res, next) => {

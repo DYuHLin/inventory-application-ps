@@ -20,8 +20,13 @@ exports.get_create_brand = asyncHandler(async (req, res, next) => {
 
 exports.create_brand = asyncHandler(async (req, res, next) => {
     const {name, origin} = req.body;
-    await pool.insertBrand(name, origin);
-    return res.redirect('/allbrands');
+    const check = await pool.getSingleBrandName(name);
+    if(check.length == 0){
+        await pool.insertBrand(name, origin);
+        return res.redirect('/allbrands');
+    } else {
+        return res.redirect('/allbrands');
+    };   
 });
 
 exports.get_delete_brand = asyncHandler(async (req, res, next) => {
