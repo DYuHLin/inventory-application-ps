@@ -23,7 +23,6 @@ exports.get_create_type = asyncHandler(async (req, res, next) => {
 exports.create_type = asyncHandler(async (req, res, next) => {
     const {typeshoe} = req.body;
     const check = await pool.getSingleTypeName(typeshoe);
-    console.log(check)
     if(check.length == 0){
         await pool.insertType(typeshoe);
         return res.redirect('/alltypes');

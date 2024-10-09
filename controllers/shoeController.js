@@ -30,7 +30,6 @@ exports.get_create_shoe = asyncHandler(async (req, res, next) => {
 exports.create_shoe = asyncHandler(async (req, res, next) => {
     const {name, price, stock, type, brand} = req.body;
     const check = await pool.getSingleShoeName(name);
-    console.log(check);
     if(check.length == 0){
         await pool.insertShoe(name, price, stock, type, brand);
         return res.redirect('/allshoes');
